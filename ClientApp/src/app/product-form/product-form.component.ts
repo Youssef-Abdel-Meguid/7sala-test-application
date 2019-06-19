@@ -38,11 +38,17 @@ export class ProductFormComponent implements OnInit {
 
       if(this.product.id) {
           this.productService.updateProduct(this.product)
-                             .subscribe(x => console.log(x));
+                             .subscribe(x => {
+                               this.router.navigate(['/home']);
+                               console.log(x);
+                            });
       }
       else {
         this.productService.addProduct(this.product)
-                           .subscribe(x => console.log(x));
+                           .subscribe(x => {
+                             this.router.navigate(['/home']);
+                             console.log(x);
+                          });
       }
   }
 
