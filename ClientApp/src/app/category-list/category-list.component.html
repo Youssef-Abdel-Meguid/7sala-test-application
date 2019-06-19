@@ -1,0 +1,28 @@
+<h1>Categories</h1>
+
+<p>
+    <a class="btn btn-primary" [routerLink]="['/category/new']">New Category</a>
+</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of categories">
+      <td>{{c.id}}</td>
+      <td>{{c.name}}</td>
+      <td>
+        <a [routerLink]="['/category/', c.id]" >View</a>
+      </td>
+      <td>
+        <a [routerLink]="['/products/', c.id]">List All Products</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,41 @@
+<h1>New Product</h1>
+
+<form (ngSubmit)="submit()">
+
+  <div class="form-group">
+      <label for="productName">Name</label>
+      <input id="prdouctName" type="text" class="form-control" 
+             [(ngModel)]="product.name" name="productName">
+  </div>
+
+  <div class="form-group">
+      <label for="productPrice">Price</label>
+      <input id="prdouctPrice" type="text" class="form-control" 
+             [(ngModel)]="product.price" name="productPrice">
+  </div>
+
+  <div class="form-group">
+      <label for="productDescription">Description</label>
+      <textarea id="productDescription" type="text" class="form-control" 
+                [(ngModel)]="product.description" name="productDescription"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="productImage">Image</label>
+    <input id="productImage" type="text" class="form-control"
+           [(ngModel)]="product.image" name="productImage">
+  </div>
+
+  <div class="form-group">
+    <label for="categoryId">Category</label>
+    <select id="categoryId" class="form-control" 
+            [(ngModel)]="product.categoryId" name="categoryId">
+      <option value=""></option>
+      <option *ngFor="let c of categories" value="{{c.id}}">{{c.name}}</option>
+    </select>
+  </div>
+
+  <button class="btn btn-primary">Save</button>
+  <button class="btn btn-danger" type="button" (click)="delete()">Delete</button>
+
+</form>

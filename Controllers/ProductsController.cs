@@ -4,6 +4,7 @@ using _7sala_test_application.Models;
 using _7sala_test_application.Persistence;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace _7sala_test_application.Controllers
 {
@@ -33,6 +34,15 @@ namespace _7sala_test_application.Controllers
                 return NotFound();
 
             return product;
+        }
+
+        //Get products by category ID
+        [HttpGet("api/products/{categoryId}")]
+        public async Task<IEnumerable<Product>> GetProductsByCategoryId(int categoryId)
+        {
+            return await context.Products.Include(c => c.Category)
+                                         .Where(p => p.CategoryId == categoryId)
+                                         .ToListAsync();
         }
 
         //Add new product
